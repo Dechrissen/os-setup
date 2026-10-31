@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Trezor Suite
+Exec=/home/derek/Applications/Trezor-Suite.AppImage
+Categories=Finance;
+Terminal=false
