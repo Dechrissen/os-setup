@@ -105,6 +105,25 @@ Log out and back in, then in the **Extensions** app enable:
 2. `Super+S`: screenshot
 3. `Super+Q`: close window
 
+**Change the way workspaces work, similar to Hyprland (`Super+[1-9]`)**:
+- Settings -> Multitasking -> Workspaces -> Fixed number
+- Then run:
+```bash
+for i in {1..9}; do
+  gsettings set org.gnome.shell.keybindings switch-to-application-$i "[]"
+done
+
+for i in {1..9}; do
+  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-$i "['<Super>$i']"
+  gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-$i "['<Super><Shift>$i']"
+done
+```
+
+**Other things**:
+- Night Light
+- Screen timeout and auto-suspend
+- Time and date format for top bar
+
 ## 5. Packages
 
 **From Debian**:
