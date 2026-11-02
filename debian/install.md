@@ -39,11 +39,19 @@ sudo dd if=debian-13.*-amd64-netinst.iso of=/dev/sdX bs=4M status=progress oflag
 Components: main contrib non-free non-free-firmware
 ```
 
+Then update (this is also the regular update command, run it ~weekly):
+
 ```bash
 sudo apt update && sudo apt full-upgrade
 ```
 
-Check Settings → System → About → Graphics shows the real GPU (not `llvmpipe`).
+Every ~month, clean up old kernels and leftover dependencies:
+
+```bash
+sudo apt autoremove
+```
+
+Check and make sure Settings → System → About → Graphics shows the real GPU (not `llvmpipe`).
 
 **Flatpak**:
 
@@ -80,7 +88,7 @@ chmod 644 ~/.ssh/*.pub
 ssh -T git@github.com
 ```
 
-## 4. GNOME
+## 4. GNOME configuration (manual)
 
 ```bash
 sudo apt install gnome-shell-extension-appindicator gnome-shell-extensions gnome-shell-extension-prefs gnome-tweaks
@@ -91,7 +99,11 @@ Log out and back in, then in the **Extensions** app enable:
 - **AppIndicator** (listed as "Ubuntu AppIndicators") for tray icons
 - **System Monitor** for CPU / RAM / network in the top bar
 
-Shortcut: Settings → Keyboard → Custom Shortcuts → **Super+Enter** → terminal (command = whichever terminal you want).
+**Keyboard shortcuts** (Settings → Keyboard → Custom Shortcuts):
+
+1. `Super+Enter`: terminal (command = whichever terminal you want)
+2. `Super+S`: screenshot
+3. `Super+Q`: close window
 
 ## 5. Packages
 
@@ -123,6 +135,7 @@ Python: one venv per project (`python3 -m venv .venv`) — system-wide `pip inst
 ```bash
 flatpak install flathub org.godotengine.Godot
 flatpak install flathub com.yubico.yubioath
+flatpak install flathub com.discordapp.Discord
 ```
 
 **VSCodium** (vscodium.com):
